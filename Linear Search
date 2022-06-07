@@ -1,0 +1,39 @@
+
+def repeat():
+	print('Want to enter again? Y/N')
+	a = input()
+	if a == 'Y':
+		print('Enter Name to be searched: ')
+		n = input()
+		linearsearch(n)
+	elif a == 'N':
+		print('Thanks for using')
+	else:
+		print('Enter correct value :')
+		repeat()
+
+
+
+def linearsearch(n):
+	s={ 1 : 'SOMESH',
+	    2 : 'SAURABH',
+        3 : 'PRIYA',
+        4 : 'DEV'
+      }
+	flag = 0
+	N=n.upper()
+	for i in range(1,len(s)):
+		if N == s[i]:
+			print(s[i], ' : Found')
+			flag=1
+			repeat()
+			break
+
+	if flag == 0:
+		print('Not Found!')
+		repeat()
+
+
+print('Enter name to be searched: ')
+n = input()
+linearsearch(n)
