@@ -1,0 +1,68 @@
+print('Welcome to FML')
+
+def price(s):
+    L1 = {'Momo': 100, 'Corn': 200,
+          'Rice': 300, 'Dal': 300,
+          'Roti': 30, 'Naan': 50,
+          'Beer': 300, 'Water': 50}
+    return L1[s]
+
+def cust(inp):
+    global cust1
+    global L3
+    L3 = {}
+    print('Existing customer? Enter-> Y/N')
+    ch = input()
+    if ch == 'N':
+        L3[1] = input('Enter customer name: ')
+
+
+
+
+def Order():
+    flag = 0
+    global TotalBill
+    TotalBill = 0
+    L1 = {1: 'Starter', 2: 'Main course', 3: 'Bread', 4: 'Beverage'}
+    L2 = {1: {1: 'Momo', 2: 'Corn'},
+          2: {1: 'Rice', 2: 'Dal'},
+          3: {1: 'Roti', 2: 'Naan'},
+          4: {1: 'Beer', 2: 'Water'}}
+
+    while flag == 0:
+        print('*************Menu***************')
+        print('Select 1 -> 4 from below options')
+        for x in L1:
+            print(x, '-', L1[x])
+        inp1 = int(input())
+        print('Select 1 -> 2 from below options')
+        for x in range(inp1, inp1 + 1):
+            for j in range(1, 3):
+                print(j, '-', L2[x][j])
+        inp2 = int(input())
+        p = price(L2[inp1][inp2])
+        print('Please input no. of Plates/Bottle for ', L2[inp1][inp2])
+        quant = int(input())
+        prc = price(L2[inp1][inp2])
+        TotalBill = TotalBill + (quant * prc)
+        flag = check(flag)
+
+
+def check(flag):
+    while flag != 1:
+        print('Any more items ? enter: Y/N')
+        ItemRem = input()
+        if ItemRem == 'N':
+            flag = 1
+            bill()
+            return flag
+        elif ItemRem == 'Y':
+            flag = 0
+            return flag
+        else:
+            print('Enter Again')
+
+def bill():
+    print(TotalBill)
+
+Order()
